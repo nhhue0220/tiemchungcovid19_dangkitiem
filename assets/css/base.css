@@ -1,0 +1,97 @@
+:root {
+   --blue-color: #2652d4;
+   --white-color: #fff;
+   --black-color: #000;
+   --text-color: #333;
+   --border-color:  #cccccc;
+}
+
+* {
+   box-sizing: inherit;
+}
+
+html {
+   font-size: 62.5%;
+   line-height: 1.6rem;
+   font-family: 'Roboto', sans-serif;
+   box-sizing: border-box;
+}
+
+.text-danger {
+   color: #ff0000;
+}
+
+/* Animation */
+@keyframes GrowDown {
+   from {
+       transform: scaleY(0);
+   }
+   to {
+       transform: scaleY(1);
+   }
+}
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+}
+
+/* Button styles */
+.btn {
+   min-width: 124px;
+   height: 34px;
+   text-decoration: none;
+   border: none;
+   border-radius: 2px;
+   font-size: 1.5rem;
+   padding: 0 12px;
+   outline: none;
+   color: var(--text-color);
+   cursor: pointer;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.modal{
+   height: 100%;
+   width: 100%;
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   background-color: rgba(0,0,0,0.3);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   display: none;
+   animation: fadein ease-in 0.5s;
+   z-index: 1000;
+}
+.modal_body{
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.modal_resign{
+   background-color: var(--white-color);
+   height: 560px;
+   width: 520px;
+   margin : 0 20px;
+   border-radius: 5px;
+   overflow: hidden;
+}
+.modal_login{
+   background-color: white;
+   height: 480px;
+   width: 520px;
+   margin : 0 20px;
+   border-radius: 5px;
+   overflow: hidden;
+}

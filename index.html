@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Cổng thông tin tiêm chủng Covid 19</title>
+      <link rel="icon" href="./assets/img/logo.png" type="image/x-icon" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+      <link rel="stylesheet" href="./assets/css/base.css">
+      <link rel="stylesheet" href="./assets/css/main.css">
+      <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4/css/all.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600&display=swap&subset=vietnamese" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+   </head>
+
+   <body>
+      <div class="main">
+         <div class="header">
+            <div class="header__logo">
+               <img src="./assets/img/icon.png" alt="" class="header__logo-img">
+               <span class="header__logo-name">CỔNG THÔNG TIN TIÊM CHỦNG COVID 19</span>
+            </div>
+
+            <div class="header__navbar">
+               <ul class="header__navbar-list">
+                  <li><a href="https://nhhue0220.github.io/tiemchungcovid19/" class="header__navbar-item">Trang chủ</a></li>
+                  <li><a href="https://nhhue0220.github.io/tiemchungcovid19_dangkitiem/" target="_blank" class="header__navbar-item">Đăng kí tiêm</a></li>
+                  <li class="header__navbar-parent">
+                     <a href="" class="header__navbar-item">
+                        Tra cứu
+                        <i class="fas fa-angle-down"></i>
+                     </a>
+                     <ul class="header__navbar-child">
+                        <li onclick="certificate_box()">Tra cứu chứng nhận tiêm</li>
+                        <li onclick="registration_box()">Tra cứu kết quả đăng kí</li>
+                     </ul>
+                  </li>
+                  <li><a href="" class="header__navbar-item">Khai báo y tế</a></li>
+                  <li><button class="header__navbar-item-btn" onclick="login_box()" style="margin-left: 30px;">Đăng nhập</button></li>
+                  <li><button class="header__navbar-item-btn" onclick="resign_box()">Đăng kí</button></li>
+                  <li>
+                     <img src="./assets/img/vn.png" alt="" class="flag-current">
+                     <a href="" class="header__navbar-current-language">
+                        VN
+                     </a>
+                     <span>|</span>
+                     <a href="" class="header__navbar-language">EN</a></li>
+                     <img src="./assets/img/usa.png" alt="" class="flag">
+               </ul>
+            </div>
+         </div>
+
+         <div class="container">
+            <div style="box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.2); margin: 20px 100px; border-radius: 5px;">
+               <div style="display: flex; align-items: center;">
+                  <h2 class="name">Đăng kí mũi tiêm thứ</h2>
+                  <input name="number" type="radio" style="margin-left: 30px;">
+                  <span class="choice__name" style="font-size: 1.6rem;">Mũi tiêm thứ nhất</span>
+                  <input name="number" type="radio" style="margin-left: 30px;">
+                  <span class="choice__name" style="font-size: 1.6rem;">Mũi tiêm tiếp theo</span>
+               </div>
+
+               <div class="person-infor">
+                  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                     <div class="person-infor__item">
+                        <h4 class="person-infor__item-title">
+                           Họ và tên
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input type="text" name="name" placeholder="Họ và tên" class="person-infor__item-input">
+                     </div>
+                     <div class="person-infor__item">
+                        <h4 class="person-infor__item-title">
+                           Ngày sinh
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input type="date" class="person-infor__item-input">
+                     </div>
+                     <div class="person-infor__item" style="width: 320px; padding-left: 70px;">
+                        <h4 class="person-infor__item-title">
+                           Giới tính
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input name="sex" type="radio" style="margin: 0 6px 0 16px; cursor: pointer;">
+                        <span class="choice__sex">Nam</span>
+                        <input name="sex" type="radio" style="margin: 0 6px 0 16px; cursor: pointer;">
+                        <span class="choice__sex">Nữ</span>
+                     </div>
+                  </div>
+
+                  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                     <div class="person-infor__item">
+                        <h4 class="person-infor__item-title">
+                           Số điện thoại
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input type="tel" name="phone" placeholder="Số điện thoại" class="person-infor__item-input">
+                     </div>
+                     <div class="person-infor__item">
+                        <h4 class="person-infor__item-title">
+                           Số CMND/CCCD/HC
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input type="text" placeholder="Số CMND/CCCD/HC" class="person-infor__item-input">
+                     </div>
+                     <div class="person-infor__item">
+                        <h4 class="person-infor__item-title">Số thẻ BHYT</h4>
+                        <input type="text" placeholder="Số thẻ BHYT" class="person-infor__item-input">
+                     </div>
+                  </div>
+                  
+                  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                     <div class="person-infor__item">
+                        <h4 class="person-infor__item-title">Nghề nghiệp</h4>
+                        <input type="text" placeholder="Nghề nghiệp" class="person-infor__item-input">
+                     </div>
+                     <div class="person-infor__item">
+                        <h4 class="person-infor__item-title">Dân tộc</h4>
+                        <input type="text" placeholder="Dân tộc" class="person-infor__item-input">
+                     </div>
+                     <div class="person-infor__item">
+                        <h4 class="person-infor__item-title">Quốc tịch</h4>
+                        <input type="text" placeholder="Quốc tịch" class="person-infor__item-input">
+                     </div>
+                  </div>
+
+                  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                     <div class="person-infor__item" style="position: relative;">
+                        <h4 class="person-infor__item-title">
+                           Tỉnh / Thành phố
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input type="text" placeholder="Tỉnh / Thành phố" class="person-infor__item-input">
+                        <i class="person-infor__item-icon fas fa-caret-down" style="cursor: pointer;"></i>
+                     </div>
+
+                     <div class="person-infor__item" style="position: relative;">
+                        <h4 class="person-infor__item-title">
+                           Quận / Huyện
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input type="text" placeholder="Quận / Huyện" class="person-infor__item-input">
+                        <i class="person-infor__item-icon fas fa-caret-down" style="cursor: pointer;"></i>
+                     </div>
+
+                     <div class="person-infor__item" style="position: relative;">
+                        <h4 class="person-infor__item-title">
+                           Xã / Phường
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input type="text" placeholder="Xã / Phường" class="person-infor__item-input">
+                        <i class="person-infor__item-icon fas fa-caret-down" style="cursor: pointer;"></i>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="note">
+                  <div class="note__title">Lưu ý:</div>
+                  <div>
+                     <ul>
+                        <li>Việc đăng ký thông tin hoàn toàn bảo mật và phục vụ cho chiến dịch tiêm chủng Vaccine COVID - 19.</li>
+                        <li>Vui lòng kiểm tra kĩ thông tin.</li>
+                        <li>Bằng việc nhấn nút "Xác nhận", bạn hoàn toàn hiểu và đồng ý chịu trách nhiệm với các thông tin đã cung cấp.</li>
+                        <li>Người dân đăng ký thành công trên hệ thống sẽ được đưa vào danh sách chờ tiêm. Cơ sở y tế sẽ thông báo lịch tiêm khi có vaccine và kế hoạch tiêm được phê duyệt. Trân trọng cảm ơn!</li>
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="submit">
+                  <button class="submit__btn">Xác nhận</button>
+               </div>
+            </div>
+            
+         </div>
+
+         <div class="footer">
+            <div class="footer-left">
+               <div>
+                  <span class="footer-left__text">© Bản quyền thuộc TRUNG TÂM CÔNG NGHỆ PHÒNG, CHỐNG DỊCH COVID-19 QUỐC GIA</span>
+                  <div>
+                     <span style="font-size:1.2rem; color: var(--white-color);">Phát triển bởi</span>
+                     <span style="font-size:1.4rem; color: #990000;">CMPM Nhóm 3</span>
+                  </div>
+               </div>
+               <div>
+                  <img src="./assets/img/logo2bo.png" alt="" class="footer-left-img">
+               </div>
+            </div>
+
+            <div class="footer-right">
+               <span class="footer-right__text">Tải sổ sức khỏe điện tử để đăng ký tiêm và nhận giấy chứng nhận tiêm</span>
+               <div class="footer-right__app">
+                  <a href="https://drive.google.com/drive/u/0/folders/1iJBPoQILfA9AWA72qRE1HqtxJtzQpODm" target="_blank" class="footer-right__app-link">
+                     <i class="footer-right__app-link-icon fab fa-google-play"></i>
+                     App tiêm di động (Cho HCM)
+                  </a>
+
+                  <a href="https://apps.apple.com/vn/app/s%E1%BB%95-s%E1%BB%A9c-kh%E1%BB%8Fe-%C4%91i%E1%BB%87n-t%E1%BB%AD/id1555911794?l=vi" target="_blank" class="footer-right__app-link">
+                     <i class="footer-right__app-link-icon fab fa-app-store-ios"></i>
+                     App Store
+                  </a>
+
+                  <a href="https://play.google.com/store/apps/details?id=com.mohviettel.sskdt" target="_blank" class="footer-right__app-link">
+                     <i class="footer-right__app-link-icon fab fa-google-play"></i>
+                     Google Play
+                  </a>
+               </div>
+            </div>
+         </div>
+
+         <div>
+            <a href="" class="report__btn">
+               <i class="fas fa-bullhorn" style="padding-right: 10px;"></i>
+               Phản ánh thông tin
+            </a>
+         </div>
+
+         <div>
+            <a href="tel:19009095" class="call__btn">
+               <i class="fas fa-phone-alt" style="padding-right: 10px;"></i>
+               19009095
+            </a>
+         </div>
+      </div>
+
+      <div class="modal" id="modal_login" style="animation: fadeIn ease-in-out 0.4s; transform-origin: top center;">
+         <div class="modal_body" id="modal_body--login">
+            <div class="modal_login" id="modal_login--box">
+               <div class="body_header">
+                  <h1 class="body_header-heading">Đăng nhập</h1>
+                  <button class="switch-btn" onclick="resign_box()">Đăng kí</button>
+               </div>
+               <form action="" class="form">
+                  <div class="modal_input modal_input-login">
+                     <div class="input">
+                        <input type="tel" name="phone" class="from-control" required="" placeholder="Số điện thoại" style="margin-top: 60px;">
+                     </div>
+                     <div class="input">
+                        <input type="password" class="from-control" placeholder="Mật khẩu">
+                     </div>
+                     <div class="help_forget">
+                        <a href="#" class="help_btn">Trợ giúp ?</a>
+                        <a href="#" class="forget_btn">Quên mật khẩu</a>
+                     </div>
+                     <div class="input_footer" style="margin-top: 60px;">
+                        <button class="footer_back btn" id="btn_close">Hủy bỏ</button>
+                        <button class="footer_resign btn">Đăng nhập</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+     </div>
+     
+     <div class="modal" id="modal_resign" style="animation: fadeIn ease-in-out 0.4s; transform-origin: top center;">
+         <div class="modal_body" id="modal_body--resign">
+            <div class="modal_resign" id="modal_resign--box">
+               <div class="body_header">
+                  <h1 class="body_header-heading">Đăng kí</h1>
+                  <button class="switch-btn" onclick="login_box()">Đăng nhập</button>
+               </div>
+               <form action="">
+                  <div class="modal_input">
+                     <div class="input">
+                        <input type="text" name="name" class="from-control" placeholder="Họ và tên">
+                     </div>
+                     <div class="input">
+                        <input type="tel" name="phone" class="from-control" placeholder="Số điện thoại">
+                     </div>
+                     <div class="input">
+                        <input type="password" class="from-control" placeholder="Nhập mật khẩu">
+                     </div>
+                     <div class="input">
+                        <input type="password" class="from-control" placeholder="Nhập lại mật khẩu">
+                     </div>
+                     <div class="input">
+                        <input type="text" class="from-control" placeholder="Mã xác nhận">
+                     </div>
+                     <div class="input_footer">
+                        <button class="footer_back btn" id="btnClose">Hủy bỏ</button>
+                        <button class="footer_resign btn">Đăng kí</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+
+      <div class="modal" id="modal_certificate" style="animation: fadeIn ease-in-out 0.4s; transform-origin: top center;">
+         <div class="modal_body" id="modal_body--certificate">
+            <div class="modal_certificate" id="modal_certificate--box" style="background-color: var(--white-color); width: 500px; height: 500px;">
+               <div class="body_header">
+                  <h1 class="body_header-heading">Tra cứu chứng nhận tiêm</h1>
+               </div>
+               <form action="">
+                  <div class="modal_input">
+                     <div style="display: flex; justify-content: space-between; margin: 0 40px;">
+                        <div class="input">
+                           <h4 class="person-infor__item-title">
+                              Họ và tên
+                              <span class="text-danger">(*)</span>
+                           </h4>
+                           <input type="text" name="name" class="from-control" placeholder="Họ và tên">
+                        </div>
+                        <div class="input">
+                           <h4 class="person-infor__item-title">
+                              Ngày sinh
+                              <span class="text-danger">(*)</span>
+                           </h4>
+                           <input type="date" class="from-control" placeholder="Ngày sinh">
+                        </div>
+                     </div>
+                     
+                     <div style="display: flex; align-items: center; justify-content: space-between; margin: 0 40px;">
+                        <div class="input">
+                           <h4 class="person-infor__item-title">
+                              Giới tính
+                              <span class="text-danger">(*)</span>
+                           </h4>
+                           <input name="sex" type="radio" style="margin: 0 6px 0 16px;">
+                           <span class="choice__sex" style="font-size: 1.6rem;">Nam</span>
+                           <input name="sex" type="radio" style="margin: 0 6px 0 16px;">
+                           <span class="choice__sex" style="font-size: 1.6rem;">Nữ</span>
+                        </div>
+                        <div class="input">
+                           <h4 class="person-infor__item-title">
+                              Số điện thoại
+                              <span class="text-danger">(*)</span>
+                           </h4>
+                           <input type="tel" name="phone" class="from-control" placeholder="Số điện thoại">
+                        </div>
+                     </div>
+                     <div style="display: flex; justify-content: space-between; margin: 0 40px;">
+                        <div class="input">
+                           <h4 class="person-infor__item-title">
+                              Số CMND/CCCD/HC
+                              <span class="text-danger">(*)</span>
+                           </h4>
+                           <input type="text" class="from-control" placeholder="Số CMND/CCCD/HC">
+                        </div>
+                        <div class="input">
+                           <h4 class="person-infor__item-title">
+                              Số thẻ BHYT
+                           </h4>
+                           <input type="text" class="from-control" placeholder="Số thẻ BHYT">
+                        </div>
+                     </div>
+                     
+                     <div class="input_footer">
+                        <button class="footer_back btn" id="btnClose">Hủy bỏ</button>
+                        <button class="footer_resign btn">Tra cứu</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+
+      <div class="modal" id="modal_registration" style="animation: fadeIn ease-in-out 0.4s; transform-origin: top center;">
+         <div class="modal_body" id="modal_body--registration">
+            <div class="modal_registration" id="modal_registration--box" style="background-color: var(--white-color); width: 500px; height: 400px;">
+               <div class="body_header">
+                  <h1 class="body_header-heading">Tra cứu kết quả đăng kí</h1>
+               </div>
+               <form action="">
+                  <div class="modal_input">
+                     <div class="input">
+                        <h4 class="person-infor__item-title">
+                           Số điện thoại
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input type="tel" name="phone" class="from-control" placeholder="Số điện thoại">
+                     </div>
+                     <div class="input">
+                        <h4 class="person-infor__item-title">
+                           Số CMND/CCCD/HC
+                           <span class="text-danger">(*)</span>
+                        </h4>
+                        <input type="text" class="from-control" placeholder="Số CMND/CCCD/HC">
+                     </div>
+                     <div class="input_footer">
+                        <button class="footer_back btn" id="btnClose">Hủy bỏ</button>
+                        <button class="footer_resign btn">Tra cứu</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </body>
+
+   <script>
+      var modal_resign = document.getElementById("modal_resign")
+      var modal_login = document.getElementById("modal_login")
+
+      function login_box() {
+         modal_resign.style.display = `none`
+         modal_login.style.display = `block`
+         var btn_close = document.getElementById("btn_close")
+         btn_close.onclick = function () {
+            modal_login.style.display = `none`
+         }
+      }
+
+      function resign_box() {
+         modal_resign.style.display = `block`
+         modal_login.style.display = `none`
+         var btnClose = document.getElementById("btnClose")
+         btnClose.onclick = function () {
+            modal_login.style.display = `none`
+         }
+      }
+
+      document.getElementById("modal_body--resign").addEventListener("click",function(){
+         modal_resign.style.display = `none`
+      })
+      document.getElementById("modal_body--login").addEventListener("click",function(){
+         modal_login.style.display = `none`
+      })
+
+      document.getElementById("modal_resign--box").addEventListener("click",function(e){
+         e.stopPropagation()
+      })
+      document.getElementById("modal_login--box").addEventListener("click",function(e){
+         e.stopPropagation()
+      })
+   </script>
+
+   <script>
+      var modal_certificate = document.getElementById("modal_certificate")
+
+      function certificate_box() {
+         modal_certificate.style.display = `block`
+         var btnClose = document.getElementById("btnClose")
+         btnClose.onclick = function () {
+            modal_certificate.style.display = `none`
+         }
+      }
+
+      document.getElementById("modal_body--certificate").addEventListener("click",function(){
+         modal_certificate.style.display = `none`
+      })
+
+      document.getElementById("modal_certificate--box").addEventListener("click",function(e){
+         e.stopPropagation()
+      })
+   </script>
+
+   <script>
+      var modal_registration = document.getElementById("modal_registration")
+
+      function registration_box() {
+         modal_registration.style.display = `block`
+         var btnClose = document.getElementById("btnClose")
+         btnClose.onclick = function () {
+            modal_registration.style.display = `none`
+         }
+      }
+
+      document.getElementById("modal_body--registration").addEventListener("click",function(){
+         modal_registration.style.display = `none`
+      })
+
+      document.getElementById("modal_registration--box").addEventListener("click",function(e){
+         e.stopPropagation()
+      })
+   </script>
+</html>
